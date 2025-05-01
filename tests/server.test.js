@@ -21,8 +21,6 @@ beforeAll(() => {
 
 it('should return 200 for a valid URL', async () => {
   const res = await request(app).get('/api/pages/test-page');
-  console.log('Status:', res.status);ç
-  console.log('Body:', res.body);
   expect(res.status).toBe(200);
 });
 
