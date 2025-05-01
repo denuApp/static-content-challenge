@@ -37,8 +37,10 @@ function App() {
       }
 
       const body = doc.body.innerHTML;
-      console.log('Body:', body);
-      setSelectedPage(body);
+      setSelectedPage({
+        page: page,
+        body: body
+      });
     } catch (error) {
       console.error('Error fetching page content:', error);
     }
@@ -71,7 +73,7 @@ function App() {
                   {pages.map((page, index) => (
                     <div 
                       key={index} 
-                      className="cursor-pointer hover:bg-orange-100 p-2 rounded transition-colors duration-200"
+                      className={`cursor-pointer hover:bg-orange-100 p-2 rounded transition-colors duration-200 ${selectedPage && selectedPage.page === page.value ? ' bg-orange-200' : ''}`}
                       onClick={() => handlePageClick(page.value)}
                     >
                       <h2 className="text-lg font-medium text-gray-500">{page.label}</h2>
@@ -85,7 +87,7 @@ function App() {
               <div className="bg-white shadow rounded-lg p-6 flex h-[calc(100vh-12rem)] w-full">
                 <div
                   className="prose  p-4 prose-h1:text-orange-400"
-                  dangerouslySetInnerHTML={{ __html: selectedPage }}
+                  dangerouslySetInnerHTML={{ __html: selectedPage.body }}
                 />
               </div>
             )}
