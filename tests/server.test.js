@@ -1,10 +1,17 @@
-const path = require('path');
-const fs = require('fs');
-const request = require('supertest');
-const { beforeAll, afterAll, it, expect } = require('@jest/globals');
+// const path = require('path');
+// const fs = require('fs');
+// const request = require('supertest');
+// const { beforeAll, afterAll, it, expect } = require('@jest/globals');
+import { join } from 'path';
+import { readdir, stat as _stat, existsSync, readFile } from 'fs-extra';
+import { parse } from 'marked';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Primero definimos el directorio temporal
-const contentDir = path.join(__dirname, 'content-test');
+const contentDir = join(__dirname, 'content-test');
 
 // Seteamos la variable de entorno antes de requerir el servidor
 process.env.CONTENT_DIR = contentDir;

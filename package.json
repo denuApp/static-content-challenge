@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Static content challenge with React frontend",
   "main": "index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git@github.com-pensionbee:PensionBee/static-content-challenge-2025.git"

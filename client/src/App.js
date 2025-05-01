@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 function App() {
   const [pages, setPages] = useState([]);
   const [selectedPage, setSelectedPage] = useState(null);
 
   const getAllPages = async () => {
     try {
-      const response = await axios.get('/api/pages');
+      const response = await axios.get(`${API_URL}/api/pages`);
       const {data} = response;
       const pages = data.map(page => {
         return {
@@ -25,7 +27,7 @@ function App() {
 
   const handlePageClick = async (page) => {
     try {
-      const html = await axios.get(`/api/pages/${page}`);
+      const html = await axios.get(`${API_URL}/api/pages/${page}`);
       const parser = new DOMParser();
       const doc = parser.parseFromString(html.data, "text/html");
 
