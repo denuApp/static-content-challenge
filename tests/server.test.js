@@ -1,17 +1,10 @@
-// const path = require('path');
-// const fs = require('fs');
-// const request = require('supertest');
-// const { beforeAll, afterAll, it, expect } = require('@jest/globals');
-import { join } from 'path';
-import { readdir, stat as _stat, existsSync, readFile } from 'fs-extra';
-import { parse } from 'marked';
-import cors from 'cors';
-import dotenv from 'dotenv';
-
-dotenv.config();
+const path = require('path');
+const fs = require('fs');
+const request = require('supertest');
+const { beforeAll, afterAll, it, expect } = require('@jest/globals');
 
 // Primero definimos el directorio temporal
-const contentDir = join(__dirname, 'content-test');
+const contentDir = path.join(__dirname, 'content-test');
 
 // Seteamos la variable de entorno antes de requerir el servidor
 process.env.CONTENT_DIR = contentDir;
@@ -28,7 +21,7 @@ beforeAll(() => {
 
 it('should return 200 for a valid URL', async () => {
   const res = await request(app).get('/api/pages/test-page');
-  console.log('Status:', res.status);
+  console.log('Status:', res.status);ç
   console.log('Body:', res.body);
   expect(res.status).toBe(200);
 });
