@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "REACT_APP_API_URL=$REACT_APP_API_URL react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
